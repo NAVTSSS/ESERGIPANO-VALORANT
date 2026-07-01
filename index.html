@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sergipano 2026 — Valorant</title>
+
+<!--
+  ===========================================================
+  SERGIPANO 2026 — VALORANT
+  Site de acompanhamento do campeonato.
+
+  Este arquivo é só a "estrutura" (HTML) do site.
+  Quem cuida da aparência (cores, fontes, espaçamentos) é o
+  arquivo style.css.
+  Quem cuida dos dados (times, jogos, placares, classificação)
+  é o arquivo script.js — é ALI que você vai mexer no dia a dia.
+
+  Você quase nunca vai precisar editar este arquivo HTML.
+  ===========================================================
+-->
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@500;600;700&family=Rajdhani:wght@600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- ============================================================ -->
+<!-- BARRA DE FUNDO ANIMADA (só decoração, não precisa mexer)       -->
+<!-- ============================================================ -->
+<div class="scan-overlay" aria-hidden="true"></div>
+
+<!-- ============================================================ -->
+<!-- 1. HEADER / TOPO                                              -->
+<!-- ============================================================ -->
+<header class="site-header" id="topo">
+  <div class="header-inner">
+    <div class="brand">
+      <!-- ALTERE AQUI AS LOGOS: logo do campeonato -->
+      <img src="assets/logo-campeonato.png" alt="Logo Sergipano 2026" class="brand-logo">
+    </div>
+
+    <button class="nav-toggle" id="navToggle" aria-label="Abrir menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+
+    <nav class="main-nav" id="mainNav">
+      <a href="#times" class="nav-link">Times</a>
+      <a href="#classificacao" class="nav-link">Classificação</a>
+      <a href="#jogos" class="nav-link">Jogos</a>
+      <a href="#semifinais" class="nav-link">Semifinais</a>
+      <a href="#regulamento" class="nav-link">Regulamento</a>
+    </nav>
+  </div>
+</header>
+
+<!-- ============================================================ -->
+<!-- 2. HERO                                                       -->
+<!-- ============================================================ -->
+<section class="hero">
+  <div class="hero-grid" aria-hidden="true"></div>
+  <div class="hero-content">
+    <span class="hero-eyebrow">Fase de grupos • 5 times • Todos contra todos</span>
+    <h1 class="hero-title">ESERGIPANO<span class="hero-title-accent">2026</span><span class="hero-title-sub">VALORANT</span></h1>
+    <p class="hero-text">Acompanhe a tabela, os confrontos, horários e resultados do campeonato em tempo real.</p>
+    <div class="hero-actions">
+      <a href="#jogos" class="btn btn-primary">Ver jogos</a>
+      <a href="#classificacao" class="btn btn-secondary">Ver classificação</a>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ -->
+<!-- 3. TIMES (renderizado via JS a partir do array "times")      -->
+<!-- ============================================================ -->
+<section class="section" id="times">
+  <div class="section-inner">
+    <span class="section-eyebrow">Competidores</span>
+    <h2 class="section-title">Times participantes</h2>
+    <div class="teams-grid" id="teamsGrid">
+      <!-- Os cards dos times são inseridos aqui automaticamente pelo script.js -->
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ -->
+<!-- 4. CLASSIFICAÇÃO (renderizado via JS a partir de "classificacao") -->
+<!-- ============================================================ -->
+<section class="section section-alt" id="classificacao">
+  <div class="section-inner">
+    <span class="section-eyebrow">Tabela</span>
+    <h2 class="section-title">Classificação</h2>
+    <div class="table-wrap">
+      <table class="standings-table">
+        <thead>
+          <tr>
+            <th>Pos</th>
+            <th class="col-team">Time</th>
+            <th>J</th>
+            <th>V</th>
+            <th>D</th>
+            <th>SD</th>
+            <th>Pts</th>
+          </tr>
+        </thead>
+        <tbody id="standingsBody">
+          <!-- Linhas inseridas automaticamente pelo script.js -->
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ -->
+<!-- 5. JOGOS DA FASE DE GRUPOS (renderizado via JS a partir de "jogos") -->
+<!-- ============================================================ -->
+<section class="section" id="jogos">
+  <div class="section-inner">
+    <span class="section-eyebrow">Confrontos</span>
+    <h2 class="section-title">Fase de grupos</h2>
+    <div id="jogosContainer">
+      <!-- Os grupos "Semana 1 — Sexta-feira", "Semana 1 — Sábado" etc.
+           são montados automaticamente pelo script.js, agrupando o
+           array "jogos" por semana + dia. -->
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ -->
+<!-- 6. SEMIFINAIS (renderizado via JS a partir de "semifinais")  -->
+<!-- ============================================================ -->
+<section class="section section-alt" id="semifinais">
+  <div class="section-inner">
+    <span class="section-eyebrow">Mata-mata</span>
+    <h2 class="section-title">Semifinais</h2>
+    <p class="section-lead">Os 4 melhores times da fase de grupos avançam para as semifinais, disputadas em MD3 (melhor de 3 mapas), uma série por dia.</p>
+
+    <div class="semis-grid" id="semisGrid">
+      <!-- Cards das semifinais inseridos automaticamente pelo script.js -->
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ -->
+<!-- 7. REGULAMENTO RESUMIDO                                       -->
+<!-- ============================================================ -->
+<section class="section" id="regulamento">
+  <div class="section-inner">
+    <span class="section-eyebrow">Regras</span>
+    <h2 class="section-title">Regulamento resumido</h2>
+
+    <div class="rules-grid">
+      <div class="rule-card">
+        <span class="rule-number">01</span>
+        <h3>Fase de grupos</h3>
+        <p>Todos contra todos, em partidas MD1 (mapa único), com duração estimada de 1 hora cada.</p>
+      </div>
+      <div class="rule-card">
+        <span class="rule-number">02</span>
+        <h3>Classificação</h3>
+        <p>Os 4 melhores times da fase de grupos avançam para as semifinais.</p>
+      </div>
+      <div class="rule-card">
+        <span class="rule-number">03</span>
+        <h3>Semifinais</h3>
+        <p>Disputadas em MD3 (melhor de 3 mapas), com uma série por dia.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ -->
+<!-- 8. RODAPÉ                                                     -->
+<!-- ============================================================ -->
+<footer class="site-footer">
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <span class="footer-title">Esergipano 2026 — Valorant</span>
+      <span class="footer-sub">Desenvolvido para acompanhamento do campeonato</span>
+    </div>
+    <div class="footer-social">
+      <!-- Placeholders de redes sociais — troque o "#" pelo link real quando tiver -->
+      <a href="#" class="social-link" aria-label="Instagram">Instagram</a>
+      <a href="#" class="social-link" aria-label="Twitter/X">Twitter/X</a>
+      <a href="#" class="social-link" aria-label="Discord">Discord</a>
+    </div>
+  </div>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
