@@ -454,6 +454,129 @@ body {
 }
 
 /* ============================================================
+   PATROCINADORES — faixa logo abaixo do hero
+============================================================ */
+.sponsors-strip {
+  position: relative;
+  z-index: 2;
+  padding: 30px 24px;
+  border-top: 1px solid var(--border-soft);
+  border-bottom: 1px solid var(--border-soft);
+  background: var(--bg-elevated);
+}
+
+.sponsors-label {
+  display: block;
+  text-align: center;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--text-faint);
+  margin-bottom: 18px;
+}
+
+.sponsors-track {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+}
+
+.sponsor-item {
+  background: var(--bg-surface);
+  border: 1px solid var(--border-soft);
+  border-radius: var(--radius-md);
+  padding: 14px 22px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.2s ease, border-color 0.2s ease, filter 0.2s ease;
+  filter: grayscale(0.15);
+}
+
+.sponsor-item:hover {
+  transform: translateY(-3px);
+  border-color: var(--border-accent);
+  filter: grayscale(0);
+}
+
+.sponsor-item img {
+  height: 34px;
+  width: auto;
+  max-width: 150px;
+  object-fit: contain;
+}
+
+/* ============================================================
+   RESULTADOS — barra de filtros e contadores
+============================================================ */
+.results-toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 32px;
+}
+
+.results-counters { display: flex; gap: 12px; }
+
+.counter-chip {
+  background: var(--bg-surface);
+  border: 1px solid var(--border-soft);
+  border-radius: var(--radius-md);
+  padding: 10px 18px;
+  text-align: center;
+  min-width: 100px;
+}
+
+.counter-num {
+  display: block;
+  font-family: var(--font-data);
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--color-accent);
+}
+
+.counter-label {
+  display: block;
+  font-size: 0.68rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-top: 2px;
+}
+
+.results-filters { display: flex; flex-wrap: wrap; gap: 10px; }
+
+.filter-select, .filter-search {
+  background: var(--bg-surface);
+  border: 1px solid var(--border-soft);
+  border-radius: var(--radius-sm);
+  color: var(--text-main);
+  font-family: var(--font-body);
+  font-size: 0.86rem;
+  font-weight: 600;
+  padding: 10px 14px;
+}
+
+.filter-select:focus, .filter-search:focus {
+  outline: none;
+  border-color: var(--border-accent);
+}
+
+.filter-search::placeholder { color: var(--text-faint); }
+
+.empty-state {
+  text-align: center;
+  color: var(--text-muted);
+  padding: 40px 0;
+  font-size: 0.94rem;
+}
+
+/* ============================================================
    JOGOS — grupos por semana/dia + cards de partida
 ============================================================ */
 .game-group { margin-bottom: 44px; }
@@ -542,6 +665,34 @@ body {
 }
 
 .match-score .dash { color: var(--text-faint); }
+
+.placar-num { padding: 0 2px; }
+.placar-num.is-vencedor { color: var(--win); }
+.placar-num.is-perdedor { color: var(--loss); }
+
+.match-team.is-vencedor span { color: var(--win); }
+.match-team.is-perdedor span { color: var(--text-muted); }
+
+.match-extra {
+  margin-top: 14px;
+  padding-top: 14px;
+  border-top: 1px dashed var(--border-soft);
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 16px;
+  font-size: 0.78rem;
+  color: var(--text-muted);
+}
+
+.match-extra-item strong { color: var(--text-main); font-weight: 600; }
+
+.match-vod {
+  color: var(--color-accent);
+  font-weight: 700;
+  margin-left: auto;
+}
+
+.match-vod:hover { text-decoration: underline; }
 
 .match-status {
   margin-top: 16px;
@@ -642,6 +793,142 @@ body {
 .alert-box strong { color: var(--color-accent); }
 
 /* ============================================================
+   CLASSIFICAÇÃO — cards para celular
+============================================================ */
+.standings-mobile { display: none; flex-direction: column; gap: 12px; }
+
+.standing-card {
+  background: var(--bg-surface);
+  border: 1px solid var(--border-soft);
+  border-radius: var(--radius-lg);
+  padding: 16px;
+}
+
+.standing-card.top-four { border-color: var(--border-accent); }
+
+.standing-card-top {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+
+.standing-card-top .team-cell { flex: 1; min-width: 0; }
+.standing-card-top .team-cell span { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+
+.standing-card-pts { color: var(--color-accent); font-family: var(--font-data); white-space: nowrap; }
+
+.standing-card-stats {
+  display: flex;
+  gap: 14px;
+  font-size: 0.82rem;
+  color: var(--text-muted);
+  flex-wrap: wrap;
+}
+
+.standing-card-stats strong { color: var(--text-main); }
+
+@keyframes flash-update {
+  0% { background: rgba(254, 206, 0, 0.16); }
+  100% { background: transparent; }
+}
+
+.just-updated { animation: flash-update 1s ease; }
+
+/* ============================================================
+   ADMINISTRAÇÃO
+============================================================ */
+.admin-lock {
+  max-width: 420px;
+  background: var(--bg-surface);
+  border: 1px solid var(--border-soft);
+  border-radius: var(--radius-lg);
+  padding: 28px;
+}
+
+.admin-lock-form { display: flex; gap: 10px; margin-top: 10px; }
+.admin-lock-form input { flex: 1; }
+
+.admin-lock-erro { color: var(--loss); font-size: 0.84rem; margin-top: 10px; min-height: 1em; }
+
+.admin-grid {
+  display: grid;
+  grid-template-columns: 1.4fr 1fr;
+  gap: 28px;
+  align-items: start;
+}
+
+.admin-form {
+  background: var(--bg-surface);
+  border: 1px solid var(--border-soft);
+  border-radius: var(--radius-lg);
+  padding: 26px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.admin-label {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+.admin-full { width: 100%; }
+
+.admin-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+.admin-matchup {
+  text-align: center;
+  font-family: var(--font-data);
+  font-size: 1.2rem;
+  font-weight: 700;
+  padding: 10px 0;
+  background: var(--bg-elevated);
+  border-radius: var(--radius-sm);
+}
+
+.admin-vs { color: var(--text-faint); margin: 0 10px; }
+
+.admin-feedback { font-size: 0.84rem; min-height: 1.2em; }
+.admin-feedback.ok { color: var(--win); }
+.admin-feedback.erro { color: var(--loss); }
+
+.admin-side { display: flex; flex-direction: column; gap: 14px; }
+
+.admin-side .alert-box code {
+  background: var(--bg-elevated);
+  padding: 1px 6px;
+  border-radius: 4px;
+  font-size: 0.86em;
+}
+
+.admin-export-box {
+  width: 100%;
+  min-height: 200px;
+  background: var(--bg-elevated);
+  border: 1px solid var(--border-soft);
+  border-radius: var(--radius-md);
+  color: var(--text-main);
+  font-family: monospace;
+  font-size: 0.78rem;
+  padding: 14px;
+  resize: vertical;
+}
+
+.admin-danger { border-color: rgba(255, 92, 114, 0.4); color: var(--loss); }
+.admin-danger:hover { background: rgba(255, 92, 114, 0.1); }
+
+/* ============================================================
    REGULAMENTO
 ============================================================ */
 .rules-grid {
@@ -738,6 +1025,19 @@ body {
   .match-team span { font-size: 0.76rem; }
 
   .match-team img { width: 36px; height: 36px; }
+
+  /* Classificação vira cards no celular */
+  .standings-desktop { display: none; }
+  .standings-mobile { display: flex; }
+
+  .admin-grid { grid-template-columns: 1fr; }
+  .admin-row { grid-template-columns: 1fr; }
+
+  .results-toolbar { flex-direction: column; align-items: stretch; }
+  .results-filters { flex-direction: column; }
+  .results-filters .filter-select, .results-filters .filter-search { width: 100%; }
+
+  .sponsor-item img { height: 26px; }
 }
 
 @media (max-width: 480px) {
